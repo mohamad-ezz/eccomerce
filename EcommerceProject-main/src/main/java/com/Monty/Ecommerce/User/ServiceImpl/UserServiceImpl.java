@@ -47,12 +47,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<User> updateUser(UUID userId, User user) {
-        User usr= userRepository.findById(userId);
+    public ResponseEntity<User> updateUser(UUID userId, User user) {  User usr= userRepository.findById(userId);
         usr.setLoginUsername(user.getLoginUsername());
         usr.setActive(user.isActive());
         Calendar dateUpdated = Calendar.getInstance();
        usr.setDateUpdated(dateUpdated);
+        usr.setEmail(user.getEmail());
+      usr.setCustomer(user.isCustomer());
+       usr.setSuperAdmin(user.isSuperAdmin());
+      usr.setVendor(user.isVendor());
+      usr.setLoginPassword(user.getLoginPassword());
+
+
+
+
        User updateUser = userRepository.save(usr);
        return ResponseEntity.ok(updateUser);
 

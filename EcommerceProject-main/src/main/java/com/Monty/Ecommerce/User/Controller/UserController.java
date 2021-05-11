@@ -52,6 +52,7 @@ public class UserController {
    }
 
    // delete user
+   @DeleteMapping("/user/{userId}")
    public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable UUID userId) {
 
         return userService.deleteUser(userId);
@@ -59,7 +60,7 @@ public class UserController {
 
 
   //  delete all users
-
+  @DeleteMapping("/user")
     public ResponseEntity<Map<String, Boolean>> deleteAllUser() {
         return userService.deleteAllUser();
     }
